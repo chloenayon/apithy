@@ -5,7 +5,7 @@ key = "dc81912032b4af7db369363784b553ee"
 
 joe = Flask(__name__)
 
-url = "api.openweathermap.org/data/2.5/weather?q=NYC"
+url = "http://api.openweathermap.org/data/2.5/weather?id=5128638&appid=dc81912032b4af7db369363784b553ee"
 request = urllib2.urlopen(url)
 result = request.read()
 r = json.loads(result)
