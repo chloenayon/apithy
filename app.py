@@ -9,7 +9,7 @@ url = "http://api.openweathermap.org/data/2.5/weather?id=5128638&appid=dc8191203
 request = urllib2.urlopen(url)
 result = request.read()
 r = json.loads(result)
-print r
+print r["main"]["temp"]
 
 @joe.route("/")
 def go():
