@@ -10,7 +10,13 @@ request = urllib2.urlopen(url)
 result = request.read()
 r = json.loads(result)
 m = r["main"]["temp"]
-print m
+#print m
+
+event = """http://api.eventful.com/json/events/search?...&keywords=music&location=New+York&date=Future&app_key=rqSF6Lsh3t772JPf"""
+req = urllib2.urlopen(event)
+res = req.read()
+q = json.loads(res)
+print q['events']
 
 @joe.route("/")
 def go():
