@@ -16,12 +16,12 @@ event = """http://api.eventful.com/json/events/search?...&keywords=music&locatio
 req = urllib2.urlopen(event)
 res = req.read()
 q = json.loads(res)
-print q['events']
+#print q['events']['event'][2]['latitude']
+
 
 @joe.route("/")
 def go():
-#    return m
-    pass
+    return render_template('home.html')
 
 if __name__=="__main__":
     joe.debug = True
