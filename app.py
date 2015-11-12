@@ -24,8 +24,10 @@ def go():
         req = urllib2.urlopen(event)                                           
         res = req.read()                                                       
         q = json.loads(res)                
-        a = q['events']['event']
-        return render_template('home.html'), things = a
+        things = q['events']['event']
+        for a in things:
+            print a
+        return render_template('home.html', things = things)
 
 if __name__=="__main__":
     joe.debug = True
