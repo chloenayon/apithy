@@ -12,26 +12,20 @@ joe = Flask(__name__)
 #m = r["main"]["temp"]
 #print m
 
-#event = """http://api.eventful.com/json/events/search?...&keywords=music&location=New+York&date=Future&app_key=rqSF6Lsh3t772JPf"""
-#req = urllib2.urlopen(event)
-#res = req.read()
-#q = json.loads(res)
-#print q['events']['event'][2]['latitude']
-
-
 @joe.route("/", methods = ["GET", "POST"])
 def go():
-#    event = """http://api.eventful.com/json/events/search?...&keywords=music&location=New+York&date=Future&app_key=rqSF6Lsh3t772JPf"""
-#    req = urllib2.urlopen(event)
-#    res = req.read()
-#    q = json.loads(res)
-    #print q['events']['event'][2]['latitude']
-#    print request.form['search']
+
     if request.method == "GET":
         return render_template('home.html')
     else:
-        print request.form['search']
-        return render_template('home.html')
+        event = """http://api.eventful.com/json/events/search?...&keywords=%s&location=New+York&date=Future&app_key=rqSF6Lsh3t772JPf"""                      
+        event = event%(request.form['search'])
+        print event
+        req = urllib2.urlopen(event)                                           
+        res = req.read()                                                       
+        q = json.loads(res)                
+        a = q['events']['event']
+        return render_template('home.html'), things = a
 
 if __name__=="__main__":
     joe.debug = True
