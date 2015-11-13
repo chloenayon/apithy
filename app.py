@@ -20,13 +20,13 @@ def go():
     else:
         event = """http://api.eventful.com/json/events/search?...&keywords=%s&location=New+York&date=Future&app_key=rqSF6Lsh3t772JPf"""                      
         event = event%(request.form['search'])
-        print event
+#        print event
         req = urllib2.urlopen(event)                                           
         res = req.read()                                                       
         q = json.loads(res)                
         things = q['events']['event']
-        for a in things:
-            print a
+#        for a in things:
+#            print a
         return render_template('home.html', things = things)
 
 if __name__=="__main__":
