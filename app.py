@@ -3,7 +3,7 @@ import urllib2, json
 
 key = "dc81912032b4af7db369363784b553ee"
 
-joe = Flask(__name__)
+app = Flask(__name__)
 
 #url = "http://api.openweathermap.org/data/2.5/weather?id=5128638&units=imperial&appid=dc81912032b4af7db369363784b553ee"
 #request = urllib2.urlopen(url)
@@ -12,9 +12,8 @@ joe = Flask(__name__)
 #m = r["main"]["temp"]
 #print m
 
-@joe.route("/", methods = ["GET", "POST"])
+@app.route("/", methods = ["GET", "POST"])
 def go():
-
     if request.method == "GET":
         return render_template('home.html')
     else:
@@ -29,6 +28,10 @@ def go():
 #            print a
         return render_template('home.html', things = things)
 
+@app.route("/results")
+def results():
+    return render_template('results.html')
+
 if __name__=="__main__":
-    joe.debug = True
-    joe.run(host='0.0.0.0', port=8000)
+    app.debug = True
+    app.run(host='0.0.0.0', port=8000)

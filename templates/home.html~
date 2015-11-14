@@ -5,36 +5,61 @@
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <style>
+      * {
+        font-family: "Courier New", Courier, monospace
+      }
       html, body {
         height: 100%;
         margin: 0;
         padding: 0;
       }
       #map {
-        height: 75%;
-        width: 75%;
-        margin: 100px;
+        height: 65%;
+        width: 65%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      #description {
+        height: 15%;
+        width: 0%;
+        text-align: center;
+        margin: 0px auto;
       }
     </style>
   </head>
   <body>
-    
-    <form action="/" method = "POST">
-      <input type = "text" name="search">
-      <input type = "submit" value = "Submit">
-    </form>
+    <h1 align="center"> Apithy </h1>
+
+    <div id="description">
+      <p color="666699">Are you indecisive? Do you spend so much time deciding what to do thatyou often miss events? If so, you've come to the right place! Enter a keyword to search for related events going on near you! 
+      </p>
+      <form action="/" method = "POST">
+	<input type = "text" name="search" placeholder="ex. food, concert" align="center">
+	<input type = "submit" value = "Submit">
+      </form>
+      <p></p>
+    </div>
 
     <div id="map"></div>
     <script>
+    var map;
 
-var map;
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 40.7834345, lng: -73.9662495},
-    zoom: 8
-  });
-}
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 40.7834345, lng: -73.9662495},
+            zoom: 8
+        });
 
+        var marker = new google.maps.Marker({
+            position: {lat: 40, lng: -73},
+            map: map,
+            title:'thing!'
+        });
+
+    marker.setMap(map)
+
+    }
+      
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4lPxqAb499_sFFmr2taESDMh90XPz80o&callback=initMap"
         async defer></script>
