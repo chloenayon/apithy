@@ -28,10 +28,6 @@ def go():
 #            print a
         return render_template('home.html', things = things)
 
-@app.route("/results")
-def results():
-    return render_template('results.html')
-
 if __name__=="__main__":
     app.debug = True
     app.run(host='0.0.0.0', port=8000)
