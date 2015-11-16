@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, session, redirect
 import urllib2, json
+import helper
 
 key = "dc81912032b4af7db369363784b553ee"
 
@@ -25,12 +26,15 @@ def go():
         f = q['events']
         things = q['events']['event']
         #a is a dictionary with information about an individual event
+        str_list = []
+        #print things[0]
         for a in things:
+            str_list.append(helper.format_event(a))
             eventlat = a['latitude']
             eventlong = a['longitude']
-        return render_template('home.html', things = things, eventlat= eventlat, eventlong = eventlong)
+        return render_template('results.html', things = things, eventlat= eventlat, eventlong = eventlong, str_list = str_list)
 
 
 if __name__=="__main__":
     app.debug = True
-    app.run(host='0.0.0.0', port=8000)
+    app.run(host='127.0.0.1', port=8000)
