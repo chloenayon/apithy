@@ -44,7 +44,7 @@
     <script>
     var map;
 
-//creates the map
+    <!--creates the map-->
 
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
@@ -52,25 +52,27 @@
             zoom: 8
         });
 
-{% for a in things %}
+    {% for a in things %}
 
-//creates a marker with lat/long positions on the 'map' map with a title
+<!--creates a marker with lat/long positions on the 'map' map with a title-->
 
         var marker = new google.maps.Marker({
-            position: {lat: 40, lng: -73},
+            position: {lat: {{eventlat}}, lng: {{eventlong }} },
             map: map,
             title:'thing!'
         });
 
+    {% endfor %}
+
     marker.setMap(map)
 
-{% endfor %}
+
 
     }
       
     </script>
 
-    //source and key for googlemaps api
+    <!--source and key for googlemaps api-->
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4lPxqAb499_sFFmr2taESDMh90XPz80o&callback=initMap"
         async defer></script>

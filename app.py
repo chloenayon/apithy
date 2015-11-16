@@ -22,10 +22,14 @@ def go():
         req = urllib2.urlopen(event)                                           
         res = req.read()                                                       
         q = json.loads(res)                
+        f = q['events']
         things = q['events']['event']
+        #a is a dictionary with information about an individual event
         for a in things:
-            print a['olson_path']
-        return render_template('home.html', things = things)
+            eventlat = a['latitude']
+            eventlong = a['longitude']
+        return render_template('home.html', things = things, eventlat= eventlat, eventlong = eventlong)
+
 
 if __name__=="__main__":
     app.debug = True
