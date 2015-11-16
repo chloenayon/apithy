@@ -19,6 +19,11 @@
         margin-left: auto;
         margin-right: auto;
       }
+      #event_list {
+      width: 80%
+      margin-left: auto;
+      margine-right: auto;
+      }
       #description {
         height: 15%;
         width: 50%;
@@ -40,14 +45,13 @@
       <p></p>
     </div>
 
-    <div id="wrapper">
-      <div id="map"></div>
-      <div id="event_list">
+    <div id="map"></div>
+    <div id="event_list">
 	{% for item in str_list %}
 	{{item|safe}}
 	{% endfor %}
-      </div>
     </div>
+    
     <script>
     var map;
 
@@ -64,9 +68,9 @@
 <!--creates a marker with lat/long positions on the 'map' map with a title-->
 
         var marker = new google.maps.Marker({
-            position: {lat: "{{eventlat}}|e", lng: "{{eventlong}}|e" },
+            position: {lat: "{{a.latitude|e}}", lng: "{{a.longitude|e}}" },
             map: map,
-            title:'thing!'
+            title:"{{a.title|e}}"
         });
 
     {% endfor %}
